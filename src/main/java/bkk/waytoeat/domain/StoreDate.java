@@ -15,8 +15,8 @@ public class StoreDate {
     private String storeId;
 
     @MapsId
-    @OneToOne
-    @JoinColumn(name = "storeId")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "storeId", referencedColumnName = "storeId")
     private Store store;
 
     private String closed;

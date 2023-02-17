@@ -19,7 +19,7 @@ public class Store {
     @Column(name = "storeId")
     private String id;
 
-    @OneToOne(mappedBy = "store")
+    @OneToOne(mappedBy = "store", cascade = CascadeType.ALL)
     private StoreDate storeDate;
 
     @NotNull
