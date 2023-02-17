@@ -20,6 +20,7 @@ class StoreTest {
     EntityManager em;
 
     @Test
+    @Rollback(value = false)
     public void setStoreTest() {
         Store store = new Store();
         store.setId("idididid");

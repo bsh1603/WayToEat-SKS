@@ -10,13 +10,17 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@Entity
+@Entity(name = "store")
 @Getter @Setter
 @NoArgsConstructor
 public class Store {
 
     @Id
+    @Column(name = "storeId")
     private String id;
+
+    @OneToOne(mappedBy = "store")
+    private StoreDate storeDate;
 
     @NotNull
     @Size(min = 2)
