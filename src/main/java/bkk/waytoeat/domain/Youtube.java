@@ -7,7 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@Entity(name = "Youtube")
+@Entity(name = "youtube")
 @Getter @Setter
 @NoArgsConstructor
 public class Youtube {

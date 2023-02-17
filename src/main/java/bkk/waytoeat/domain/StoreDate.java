@@ -6,7 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Entity(name = "storeDate")
+@Entity(name = "storedate")
 @Getter @Setter
 @NoArgsConstructor
 public class StoreDate {
@@ -15,7 +15,7 @@ public class StoreDate {
     private String storeId;
 
     @MapsId
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "storeId", referencedColumnName = "storeId")
     private Store store;
 

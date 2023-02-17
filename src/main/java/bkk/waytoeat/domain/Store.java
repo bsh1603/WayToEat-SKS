@@ -21,13 +21,13 @@ public class Store {
     @Column(name = "storeId")
     private String id;
 
-    @OneToOne(mappedBy = "store", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "store", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private StoreDate storeDate;
 
-    @OneToMany(mappedBy = "youtubeStore")
+    @OneToMany(mappedBy = "youtubeStore", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<Youtube> youtubeList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "memberStore")
+    @OneToMany(mappedBy = "memberStore", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<Member> memberList = new ArrayList<>();
 
     @NotNull
