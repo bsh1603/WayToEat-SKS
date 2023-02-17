@@ -6,23 +6,30 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-@Entity(name = "Youtube")
+@Entity(name = "member")
 @Getter @Setter
 @NoArgsConstructor
-public class Youtube {
+public class Member {
 
     @Id @GeneratedValue
-    @Column(name = "youtubeId")
+    @Column(name = "memberId")
     private Long id;
 
     @ManyToOne
     @JoinColumn(name = "storeId")
-    private Store youtubeStore;
+    private Store memberStore;
 
     @NotNull
-    private String url;
+    @Size(min = 2)
+    private String nickname;
 
     @NotNull
-    private String thumbnail;
+    @Size(min = 2)
+    private String password;
+
+    @NotNull
+    @Size(min = 2)
+    private String comment;
 }

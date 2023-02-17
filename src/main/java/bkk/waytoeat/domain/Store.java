@@ -24,8 +24,11 @@ public class Store {
     @OneToOne(mappedBy = "store", cascade = CascadeType.ALL)
     private StoreDate storeDate;
 
-    @OneToMany(mappedBy = "storeYoutube")
+    @OneToMany(mappedBy = "youtubeStore")
     private List<Youtube> youtubeList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "memberStore")
+    private List<Member> memberList = new ArrayList<>();
 
     @NotNull
     @Size(min = 2)
