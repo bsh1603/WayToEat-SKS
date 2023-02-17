@@ -32,4 +32,7 @@ public class Member {
     @NotNull
     @Size(min = 2)
     private String comment;
+
+    private String uploadFileName;
+    private String storeFileName;
 }
