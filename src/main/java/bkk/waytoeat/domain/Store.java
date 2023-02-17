@@ -9,6 +9,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "store")
 @Getter @Setter
@@ -21,6 +23,9 @@ public class Store {
 
     @OneToOne(mappedBy = "store", cascade = CascadeType.ALL)
     private StoreDate storeDate;
+
+    @OneToMany(mappedBy = "storeYoutube")
+    private List<Youtube> youtubeList = new ArrayList<>();
 
     @NotNull
     @Size(min = 2)
