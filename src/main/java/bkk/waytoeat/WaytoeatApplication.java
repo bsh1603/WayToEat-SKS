@@ -9,5 +9,4 @@ public class WaytoeatApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(WaytoeatApplication.class, args);
 	}
-
 }
