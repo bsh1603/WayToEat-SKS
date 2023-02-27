@@ -11,6 +11,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
+import static bkk.waytoeat.domain.querydsltest.QHello.*;
+import static bkk.waytoeat.domain.querydsltest.QHello.hello;
 import static org.assertj.core.api.Assertions.*;
 
 @SpringBootTest
@@ -28,10 +30,9 @@ public class QuerydslBasicTest {
         em.persist(hello);
 
         queryFactory = new JPAQueryFactory(em);
-        QHello qHello = new QHello("h");
 
         Hello result = queryFactory
-                .selectFrom(qHello)
+                .selectFrom(QHello.hello)
                 .fetchOne();
 
         assertThat(result).isEqualTo(hello);

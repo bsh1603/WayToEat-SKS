@@ -11,8 +11,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class StoreDate {
 
-    @Id
-    private String storeId;
+    @Id @GeneratedValue
+    private Long dateId;
 
     @MapsId
     @OneToOne
