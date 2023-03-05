@@ -13,7 +13,8 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 public class Member {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "memberId")
     private Long id;
 

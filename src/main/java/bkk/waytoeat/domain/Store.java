@@ -1,7 +1,7 @@
 package bkk.waytoeat.domain;
 
-import bkk.waytoeat.domain.converterClass.BooleanToYesNoConverter;
 import bkk.waytoeat.domain.enumClass.Category;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -84,7 +84,7 @@ public class Store {
     public Store(String id, String name, String phone, String location,
                  double latitude, double longitude,
                  LocalDateTime naverRatingDate, double naverRating,
-                 LocalDateTime kakaoRatingDate,double kakaoRating,
+                 LocalDateTime kakaoRatingDate, double kakaoRating,
                  double selfRating, String menuImage,
                  Category category, String categoryDetail) {
         this.id = id;

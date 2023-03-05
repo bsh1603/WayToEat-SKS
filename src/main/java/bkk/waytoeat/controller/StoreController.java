@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -19,11 +18,10 @@ public class StoreController {
     private final StoreRepository storeRepository;
 
     @GetMapping("/api/store/simple")
-    public StoreNameAndLinkDto returnNameAndLinkApi(@RequestParam double latitude,
+    public List<StoreNameAndLinkDto> returnNameAndLinkApi(@RequestParam double latitude,
                                     @RequestParam double longitude) {
-        Map<String, String> map = new HashMap<>();
-        StoreNameAndLinkDto result = storeRepository.searchWithLatAndLong(latitude, longitude);
-
+        List<StoreNameAndLinkDto> result = storeRepository.searchWithLatAndLong(latitude, longitude);
         return result;
     }
+
 }

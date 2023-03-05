@@ -12,7 +12,8 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class Youtube {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "youtubeId")
     private Long id;
 
@@ -24,5 +25,5 @@ public class Youtube {
     private String url;
 
     @NotNull
-    private String thumbnail;
+    private String phone;
 }
