@@ -1,5 +1,6 @@
 package bkk.waytoeat.controller;
 
+import bkk.waytoeat.dto.ResponseNameRatingClosedDto;
 import bkk.waytoeat.dto.StoreNameAndLinkDto;
 import bkk.waytoeat.repository.store.StoreRepository;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,13 @@ public class StoreController {
     public List<StoreNameAndLinkDto> returnNameAndLinkApi(@RequestParam double latitude,
                                     @RequestParam double longitude) {
         List<StoreNameAndLinkDto> result = storeRepository.searchWithLatAndLong(latitude, longitude);
+        return result;
+    }
+
+    @GetMapping("/api/store/info")
+    public ResponseNameRatingClosedDto responseNameRatingClosedDto(
+            @RequestParam String id) {
+        ResponseNameRatingClosedDto result = storeRepository.infoCardSearchWithId(id);
         return result;
     }
 

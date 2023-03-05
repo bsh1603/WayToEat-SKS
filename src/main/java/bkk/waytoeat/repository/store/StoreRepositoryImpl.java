@@ -1,9 +1,14 @@
 package bkk.waytoeat.repository.store;
 
+import bkk.waytoeat.domain.QStoreDate;
 import bkk.waytoeat.dto.QStoreNameAndLinkDto;
+import bkk.waytoeat.dto.ResponseNameRatingClosedDto;
 import bkk.waytoeat.dto.StoreNameAndLinkDto;
+import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.stereotype.Repository;
+
+import static bkk.waytoeat.domain.QStoreDate.*;
 import static com.querydsl.core.group.GroupBy.groupBy;
 
 import javax.persistence.EntityManager;
@@ -46,6 +51,26 @@ public class StoreRepositoryImpl implements StoreRepositoryCustom{
                 .map(result::get)
                 .collect(toList());
     }
+
+    // id를 통해 해당 가게의 가게명, 평점, 영업유무 반환
+    @Override
+    public ResponseNameRatingClosedDto infoCardSearchWithId(String id) {
+        ResponseNameRatingClosedDto result = queryFactory
+                .select(Projections.constructor(
+                        ResponseNameRatingClosedDto.class,
+                        store.name,
+                        store.naverRating,
+                        store.kakaoRating,
+                        store.selfRating,
+                        storeDate.closed))
+                .from(store)
+                .leftJoin(storeDate)
+                .on(store.id.eq(storeDate.store.id))
+                .where(store.id.eq(id))
+                .fetchOne();
+        return result;
+    }
+
 }
 
 
