@@ -25,5 +25,8 @@ public class Youtube {
     private String url;
 
     @NotNull
+    private String name;
+
+    @NotNull
     private String phone;
 }
