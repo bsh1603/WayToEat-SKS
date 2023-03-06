@@ -10,6 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,13 +52,13 @@ public class Store {
     private double longitude;
 
     @DateTimeFormat(pattern = "yy.MM.dd")
-    private LocalDateTime naverRatingDate;
+    private Date naverRatingDate;
 
     @NotNull
     private double naverRating;
 
     @DateTimeFormat(pattern = "yy.MM.dd")
-    private LocalDateTime kakaoRatingDate;
+    private Date kakaoRatingDate;
 
     @NotNull
     private double kakaoRating;
@@ -83,8 +84,8 @@ public class Store {
 
     public Store(String id, String name, String phone, String location,
                  double latitude, double longitude,
-                 LocalDateTime naverRatingDate, double naverRating,
-                 LocalDateTime kakaoRatingDate, double kakaoRating,
+                 Date naverRatingDate, double naverRating,
+                 Date kakaoRatingDate, double kakaoRating,
                  double selfRating, String menuImage,
                  Category category, String categoryDetail) {
         this.id = id;

@@ -17,6 +17,7 @@ public class YoutubeController {
     @Autowired
     YoutubeRepository youtubeRepository;
 
+    // 이름을 통해 해당 가게의 유튜브 아이디 전부 반환
     @GetMapping("/api/youtube/name/ids")
     public List<ResponseNameToIdsDto> responseNameToIdsApi(@RequestParam String name) {
         List<ResponseNameToIdsDto> result = youtubeRepository.getIds(name);

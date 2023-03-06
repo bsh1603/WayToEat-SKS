@@ -3,6 +3,7 @@ package bkk.waytoeat.repository.store;
 import bkk.waytoeat.domain.QStoreDate;
 import bkk.waytoeat.dto.QStoreNameAndLinkDto;
 import bkk.waytoeat.dto.ResponseNameRatingClosedDto;
+import bkk.waytoeat.dto.ResponseStoreDetailDto;
 import bkk.waytoeat.dto.StoreNameAndLinkDto;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -68,6 +69,39 @@ public class StoreRepositoryImpl implements StoreRepositoryCustom{
                 .on(store.id.eq(storeDate.store.id))
                 .where(store.id.eq(id))
                 .fetchOne();
+        return result;
+    }
+
+    // 가게 상세정보
+    @Override
+    public ResponseStoreDetailDto getStoreDetail(String id) {
+        ResponseStoreDetailDto result = queryFactory
+                .select(Projections.constructor(
+                        ResponseStoreDetailDto.class,
+                        store.id,
+                        store.name,
+                        store.naverRatingDate,
+                        store.naverRating,
+                        store.kakaoRatingDate,
+                        store.kakaoRating,
+                        store.selfRating,
+                        store.phone,
+                        storeDate.closed,
+                        storeDate.workMon,
+                        storeDate.workTue,
+                        storeDate.workWed,
+                        storeDate.workThu,
+                        storeDate.workFri,
+                        storeDate.workSat,
+                        storeDate.workSun,
+                        store.menuImage
+                ))
+                .from(store)
+                .leftJoin(storeDate)
+                .on(store.id.eq(storeDate.store.id))
+                .where(store.id.eq(id))
+                .fetchOne();
+
         return result;
     }
 
